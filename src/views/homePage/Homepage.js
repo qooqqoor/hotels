@@ -1,21 +1,46 @@
 import React from 'react'
 import "./index.less"
-
+import { getHotels } from "../../service/callAPI"
+import {Text} from "../../conponents/Text"
 export default class HomePage extends React.Component{
-    api = () =>{
-        let Ajax = new XMLHttpRequest
-        Ajax.open('get','https://google.com',true)
-        Ajax.send()
-        Ajax.onreadystatechange = function(){
-                    console.log(Ajax.response);
 
-        }
+
+
+    successHotels = async () => {
+
+      const { success} =   await getHotels();
+        console.log(success)
+        // if(success){
+        //     this.setState({
+        //         allhotels:items[0].id
+        //     })
+        // }
+
+
+        // this.setState({
+        //     allhotels : allhotels.items[0].id
+        // })
+
     }
+    componentDidMount() {
+        //this.successHotels()
+    }
+
     render() {
-        this.api()
+
+
         return (
-            <div className='homepage'>
-                123456
+            <div className='homepages'>
+                <Text className="title">Radish</Text>
+                <div className="hotelsboxs">
+                    <div className="hotexbox"></div>
+                    <div className="hotexbox"></div>
+                    <div className="hotexbox"></div>
+                    <div className="hotexbox"></div>
+                    <div className="hotexbox"></div>
+                    <div className="hotexbox"></div>
+                </div>
+                <div className="footer"></div>
             </div>
         )
     }
