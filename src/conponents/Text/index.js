@@ -1,11 +1,14 @@
 import React from 'react'
+import './index.less'
 
 export const Text = (props) =>{
 
-    const {children} = props
+    const {children,className} = props
     return(
-        <div>
-            {children}
+        <div className={`textStyle ${className}`}>
+            <span>
+                 {children}
+            </span>
         </div>
 
     )
