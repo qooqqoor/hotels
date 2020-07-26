@@ -2,27 +2,24 @@ import React from 'react'
 import "./index.less"
 import { getHotels } from "../../service/callAPI"
 import {Text} from "../../conponents/Text"
+
+import {Loading} from "../../conponents/Loading"
+import {Footer} from "../../conponents/Footer"
+import {Hotelsboxs} from  "../../conponents/Hotelsboxs"
 export default class HomePage extends React.Component{
 
     state={
-        data:""
+        data:"",
+        loading:false,
     }
 
     successHotels = async () => {
 
-      const { success,items} =   await getHotels('allHotels');
-        console.log(items)
+      const { items} =   await getHotels('allHotels');
+      this.setState({
+          loading:true,
+      })
         return items
-        // if(success){
-        //     this.setState({
-        //         allhotels:items[0].id
-        //     })
-        // }
-
-
-        // this.setState({
-        //     allhotels : allhotels.items[0].id
-        // })
 
     }
     componentDidMount=async() =>{
@@ -35,50 +32,27 @@ export default class HomePage extends React.Component{
     render() {
 
         const data = this.state.data
+        const loading = this.state.loading
 
         return (
-            <div className='homepages'>
+            <>
+
+                        <div className='homepages'>
+
+                            <Text className="title">WHITE  INN</Text>
+                            {
+                                loading?'':<Loading/>
+                            }
+                            <Hotelsboxs
+                                data={data}
+                            />
+                            <div className="footer">
+                                <Footer/>
+                            </div>
+                        </div>
 
 
-
-                <Text className="title">Radish</Text>
-                <div className="hotelsboxs">
-
-                    {
-                        data.length>0?(
-                            <>
-                                {
-                                    data.map(item => {
-                                        return(
-                                            <div className="hotexbox" key={item.id}>
-                                                <div className="hotexbox-img">
-                                                    <div  style={{'backgroundImage':`url("${item.imageUrl}")`}} alt=""/>
-                                                </div>
-
-                                                <div className="hotexbox-text">
-                                                    <span>{item.name}</span>
-                                                    <span>$ {item.normalDayPrice}</span>
-                                                    <span>$ {item.holidayPrice}</span>
-                                                </div>
-                                            </div>
-                                        )
-
-                                    })
-                                }
-                            </>
-                        ):''
-
-                    }
-
-                </div>
-                <div className="footer">
-                    <div className="footer-box">
-                        <div className="address"><i className="ic ic-address"/><span>台中市西屯區市政路588號豐邑大樓</span></div>
-                        <div className="phone"><i className="ic ic-phone"/><span>04-22541496-19</span></div>
-                        <div className="mail"><i className="ic ic-mail"/><span>ada.lew@link8tech.tw</span></div>
-                    </div>
-                </div>
-            </div>
+            </>
         )
     }
 

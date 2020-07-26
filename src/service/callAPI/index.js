@@ -14,6 +14,7 @@ export const getHotels = (style,id) =>{
             break
     }
 
+
     return axios.get(URL)
         .then(function (response) {
             return response.data

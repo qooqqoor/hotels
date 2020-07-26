@@ -7,7 +7,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  user-select:none;
+  //user-select:none;
 
   //>* {
   //  border: solid;
@@ -38,11 +38,21 @@
     display: flex;
 
     flex-wrap: wrap;
-    width: 83%;
-    margin-top: 9%;
+    width: 80%;
+    margin-top: 5%;
     z-index: 2;
 
+    @keyframes fadein {
+      0% {
 
+        opacity: 0;
+      }
+
+      100% {
+
+        opacity: 1;
+      }
+    }
 
     &:after{
       content: "";
@@ -56,6 +66,7 @@
       background-color: #fff;
       transform: translateX(-50%);
       z-index: 1;
+      animation: fadein 1 1s 2s ease-in-out both;
     }
 
 
@@ -72,10 +83,14 @@
       min-width: 250px;
       z-index: 2;
       justify-content: center;
-      height: 420px;
-      background-color: #F0F0F0;
+      height: 389px;
+
       transition: 0.3s;
       cursor: pointer;
+      text-decoration:none;
+      background-color: #F0F0F0;
+
+      animation: fadein 1 1s ease-in-out both;
 
       &:hover{
 
@@ -84,15 +99,30 @@
           filter: brightness(1.05);
         }
         .hotexbox-text{
-          font-size: 19px;
+          font-size: 18px;
 
           >span:first-child{
-            font-size: 22px;
+            font-size: 19px;
           }
         }
-
-
       }
+      &:active{
+        .hotexbox-img>div{
+          transform:  scale(1.05) ;
+          filter: brightness(1);
+        }
+        .hotexbox-text{
+
+          font-size: 16px;
+          >span{
+            color: #888888;
+          }
+          >span:first-child{
+            font-size: 17px;
+          }
+        }
+      }
+
 
 
       .hotexbox-img{
@@ -111,7 +141,7 @@
       .hotexbox-text{
         flex: 1;
         font-family: 'Noto Sans TC';
-        font-size: 17px;
+        font-size: 16px;
         color: #707070;
         letter-spacing: 0.3px ;
         display: flex;
@@ -120,8 +150,9 @@
         transition: 0.3s;
 
 
+
         >span:first-child{
-          font-size: 18px;
+          font-size: 17px;
           transition: 0.3s;
         }
         >span{
@@ -150,7 +181,7 @@
       color: #B4B2B2;
       letter-spacing: 0.8px;
       display: flex;
-      margin: 34px 20%;
+      margin: 30px 20%;
       flex-wrap: wrap;
       white-space: nowrap;
 
