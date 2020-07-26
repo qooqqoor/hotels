@@ -1,0 +1,69 @@
+.lightbox-btn{
+  height: 3.9vw;
+  width: 3.9vw;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.6;
+  position: absolute;
+  right: 3.2%;
+  bottom: 3.9%;
+  cursor: pointer;
+  transition: 0.15s;
+  user-select:none;
+  filter: drop-shadow(2px 2px 3px rgba(10,10,10,0.1));
+
+  &.open{
+    background-image: url("../../assets/img/Group4.svg") ;
+  }
+  &.close{
+    background-image: url("../../assets/img/Group3.svg") ;
+  }
+
+  &:hover{
+    opacity: 0.9;
+    filter: drop-shadow(2px 2px 3px rgba(10,10,10,0.3));
+  }
+  &:active{
+    opacity: 1;
+    filter: drop-shadow(2px 2px 3px rgba(10,10,10,0.1));
+
+  }
+}
+@keyframes dowm {
+  0% {
+
+    opacity: 0;
+  }
+
+  100% {
+
+    opacity: 1;
+  }
+}
+.lightbox{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: dowm 1 0.2s  ease-in-out both;
+  user-select:none;
+
+  >div{
+    height: 80%;
+    position: relative;
+
+    >img{
+      height: 100%;
+    }
+
+  }
+
+}

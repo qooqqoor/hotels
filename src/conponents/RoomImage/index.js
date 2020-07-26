@@ -1,6 +1,7 @@
 import React from "react";
 import "./index.less"
 import {ListImage} from "../../conponents/ListImage"
+import {LightBtn} from "../../conponents/LightBtn"
 
 export const RoomImage = (props) =>{
     const {titleImage,listImage,changeTitleImage} = props
@@ -12,7 +13,10 @@ export const RoomImage = (props) =>{
                          style={{
                              backgroundImage:`url(${titleImage})`,
                          }}
-                    />
+                    >
+                        <LightBtn titleImage={titleImage} />
+
+                    </div>
                 )}
             </div>
             {listImage.length>0?(

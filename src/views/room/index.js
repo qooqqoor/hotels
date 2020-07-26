@@ -4,6 +4,7 @@ import {getHotels} from "../../service/callAPI";
 import {Loading} from "../../conponents/Loading";
 import {Text} from "../../conponents/Text"
 import {RoomImage} from "../../conponents/RoomImage"
+import {Texttitle} from "../../conponents/Text-title"
 import './index.less'
 
 
@@ -93,31 +94,12 @@ export default class Ringtons extends React.Component{
                                     changeTitleImage = {this.changeTitleImage}
                                 />
                                 <div className="room-text">
-                                    <div className="text-title">
+                                    <Texttitle
+                                        alldata={alldata}
+                                        oncedata={oncedata}
+                                        changeTitle={this.changeTitle}
+                                    />
 
-                                            {alldata&&alldata.length>0&&(
-
-                                                alldata.map(item=>{
-                                                    if(oncedata!=item.name){
-                                                        return(
-                                                            <Link
-                                                                key={item.id}
-                                                                to={{
-                                                                    pathname:'/room',
-                                                                    search:'?id='+item.id,
-                                                                }}
-                                                                className="text-p"
-                                                                onClick={()=>this.changeTitle(item.id)}
-                                                            >
-                                                                <p  key={item.id}>{item.name}</p>
-                                                            </Link>
-                                                        )
-                                                    }
-
-                                                })
-                                            )}
-
-                                    </div>
 
                                     <div className="text-body">fff</div>
                                     <div className="text-footer">ddd</div>
