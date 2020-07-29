@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/hotels/static/css/main.5acb9a64.chunk.css",
-    "main.js": "/hotels/static/js/main.31226cb7.chunk.js",
-    "main.js.map": "/hotels/static/js/main.31226cb7.chunk.js.map",
-    "runtime-main.js": "/hotels/static/js/runtime-main.3b6978a3.js",
-    "runtime-main.js.map": "/hotels/static/js/runtime-main.3b6978a3.js.map",
+    "main.js": "/hotels/static/js/main.92ae88ba.chunk.js",
+    "main.js.map": "/hotels/static/js/main.92ae88ba.chunk.js.map",
+    "runtime-main.js": "/hotels/static/js/runtime-main.5097c3c4.js",
+    "runtime-main.js.map": "/hotels/static/js/runtime-main.5097c3c4.js.map",
     "static/js/2.c0290dfa.chunk.js": "/hotels/static/js/2.c0290dfa.chunk.js",
     "static/js/2.c0290dfa.chunk.js.map": "/hotels/static/js/2.c0290dfa.chunk.js.map",
     "static/css/3.e9c31d6b.chunk.css": "/hotels/static/css/3.e9c31d6b.chunk.css",
-    "static/js/3.a954054d.chunk.js": "/hotels/static/js/3.a954054d.chunk.js",
-    "static/js/3.a954054d.chunk.js.map": "/hotels/static/js/3.a954054d.chunk.js.map",
+    "static/js/3.51c700f0.chunk.js": "/hotels/static/js/3.51c700f0.chunk.js",
+    "static/js/3.51c700f0.chunk.js.map": "/hotels/static/js/3.51c700f0.chunk.js.map",
     "static/css/4.0cec2863.chunk.css": "/hotels/static/css/4.0cec2863.chunk.css",
-    "static/js/4.c4544b32.chunk.js": "/hotels/static/js/4.c4544b32.chunk.js",
-    "static/js/4.c4544b32.chunk.js.map": "/hotels/static/js/4.c4544b32.chunk.js.map",
+    "static/js/4.962fc47a.chunk.js": "/hotels/static/js/4.962fc47a.chunk.js",
+    "static/js/4.962fc47a.chunk.js.map": "/hotels/static/js/4.962fc47a.chunk.js.map",
     "index.html": "/hotels/index.html",
-    "precache-manifest.69dce962aefb368e5865753fd0c71c21.js": "/hotels/precache-manifest.69dce962aefb368e5865753fd0c71c21.js",
+    "precache-manifest.660d181112a62d31326739d7cdc608c5.js": "/hotels/precache-manifest.660d181112a62d31326739d7cdc608c5.js",
     "service-worker.js": "/hotels/service-worker.js",
     "static/css/3.e9c31d6b.chunk.css.map": "/hotels/static/css/3.e9c31d6b.chunk.css.map",
     "static/css/4.0cec2863.chunk.css.map": "/hotels/static/css/4.0cec2863.chunk.css.map",
@@ -27,9 +27,9 @@
     "static/media/right.svg": "/hotels/static/media/right.6ac80b3d.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.3b6978a3.js",
+    "static/js/runtime-main.5097c3c4.js",
     "static/js/2.c0290dfa.chunk.js",
     "static/css/main.5acb9a64.chunk.css",
-    "static/js/main.31226cb7.chunk.js"
+    "static/js/main.92ae88ba.chunk.js"
   ]
 }
