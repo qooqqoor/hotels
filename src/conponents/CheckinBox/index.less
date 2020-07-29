@@ -1,0 +1,163 @@
+.check-bg{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(0,0,0,0.5);
+
+  top: 0;
+  right: 0;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: dowmfa 1 0.2s  ease-in-out both;
+
+  .check-box{
+    height: 60%;
+    width: 47%;
+    background-color: #fff;
+    transition: 0.3s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: relative;
+
+    *>{
+
+    }
+    
+    .check-box-title{
+      width: 83%;
+      font-family: Noto Sans TC;
+      color: #676767;
+      font-size: calc(40px + 0.1vw);
+      border-bottom: solid #c4c2c2 1px;
+      text-align: center;
+      margin-top: 4.2%;
+      padding-bottom: 1%;
+      line-height: 1.5;
+      font-weight: 1000;
+      letter-spacing: 0.5px;
+
+
+
+    }
+    .check-box-center{
+      width: 67%;
+      font-family: Noto Sans TC;
+      .check-box-center-title{
+        border-bottom: solid #B4B2B2 3px;
+        padding-top: 5.3% ;
+
+
+        >div{
+          display: flex;
+          justify-content: center;
+          margin-bottom: 6%;
+          flex-wrap: wrap;
+          .border-gray{
+            color: #B4B2B2;
+
+            border: solid 1px #B4B2B2;
+            padding: 1.8% 3.6%;
+            box-shadow: 0 0 1px #B4B2B2;
+            font-size: calc(15px + 0.1vw);
+
+          }
+          p{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 1.8%;
+            color: #676767;
+            font-size: calc(20px + 0.1vw);
+          }
+        }
+      }
+      .check-box-center-total{
+        float: right;
+        padding: 5% 5% 5% 0;
+        font-size: calc(20px + 0.07vw);
+        font-weight: bold;
+        color: #676767;
+        letter-spacing: 3px;
+
+      }
+    }
+
+    .check-box-btn{
+      position: absolute;
+      bottom: 7.8%;
+    }
+  }
+  .check-colse-btn{
+    height: 3.5vw;
+    width: 3.5vw;
+    min-width: 40px;
+    min-height: 40px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    position: absolute;
+    z-index: 2;
+    right: 3.2%;
+    bottom: 3.9%;
+    cursor: pointer;
+    transition: 0.15s;
+    user-select:none;
+    filter: drop-shadow(0px 0px 3px rgba(10,10,10,0.3));
+    background-image: url("../../assets/img/Group 19.svg") ;
+    &:hover{
+      opacity: 0.9;
+      filter: drop-shadow(0px 0px 4px rgba(10,10,10,0.3));
+    }
+    &:active{
+      opacity: 1;
+      filter: drop-shadow(0px 0px 2px rgba(10,10,10,0.3));
+
+    }
+  }
+}
+@media only screen and (max-width: 1169px) and (min-width: 992px){
+  .check-bg{
+    .check-box{
+      height: 60%;
+      width: 67%;
+    }
+  }
+}
+@media only screen and (max-width: 991px) {
+  .check-bg{
+    .check-box{
+      height: 70%;
+      width: 87%;
+    }
+  }
+  .check-box-center{
+    >div{
+      padding: 10% 0 5% 0;
+    }
+  }
+  .check-box-center-title{
+    .border-gray{
+      padding: 3.6% 7.2%;
+      margin: 2% 0;
+    }
+  }
+
+
+}
+@keyframes dowmfa {
+  0% {
+
+    opacity: 0;
+  }
+
+  100% {
+
+    opacity: 1;
+  }
+}
