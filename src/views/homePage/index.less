@@ -1,0 +1,226 @@
+.homepages{
+  width: 100%;
+  min-height: 100%;
+  position: relative;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  //user-select:none;
+
+  //>* {
+  //  border: solid;
+  //}
+  &::after{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 36.75%;
+    background-color: #F0F0F0;
+    position: absolute;
+    bottom: 0;
+
+  }
+
+  .title{
+
+    font-size: calc(60px + 5vw);
+    margin: 68px 0;
+
+    width: 100%;
+    text-align: center;
+
+  }
+
+  .hotelsboxs{
+    position: relative;
+    display: flex;
+
+    flex-wrap: wrap;
+    width: 80%;
+    margin-top: 5%;
+    z-index: 2;
+
+    @keyframes fadein {
+      0% {
+
+        opacity: 0;
+      }
+
+      100% {
+
+        opacity: 1;
+      }
+    }
+
+    &:after{
+      content: "";
+      display: block;
+      width: 90%;
+      height: 100%;
+
+      position: absolute;
+      top: 0;
+      left: 50%;
+      background-color: #fff;
+      transform: translateX(-50%);
+      z-index: 1;
+      animation: fadein 1 1s 2s ease-in-out both;
+    }
+
+
+
+
+    .hotexbox{
+
+      margin: 0 0.8px;
+      padding: 2px 0px;
+      flex: 1;
+      display: flex;
+      flex-direction:column ;
+
+      min-width: 250px;
+      z-index: 2;
+      justify-content: center;
+      height: 389px;
+
+      transition: 0.3s;
+      cursor: pointer;
+      text-decoration:none;
+      background-color: #F0F0F0;
+
+      animation: fadein 1 1s ease-in-out both;
+
+      &:hover{
+
+        .hotexbox-img>div{
+          transform:  scale(1.1) ;
+          filter: brightness(1.05);
+        }
+        .hotexbox-text{
+          font-size: 18px;
+
+          >span:first-child{
+            font-size: 19px;
+          }
+        }
+      }
+      &:active{
+        .hotexbox-img>div{
+          transform:  scale(1.05) ;
+          filter: brightness(1);
+        }
+        .hotexbox-text{
+
+          font-size: 16px;
+          >span{
+            color: #888888;
+          }
+          >span:first-child{
+            font-size: 17px;
+          }
+        }
+      }
+
+
+
+      .hotexbox-img{
+        flex: 3.7;
+        height: 100%;
+        overflow: hidden;
+        >div{
+          height: 100%;
+          background-size:      cover;
+          background-repeat: no-repeat;
+          background-position: center ;
+          transition: 0.3s;
+        }
+
+      }
+      .hotexbox-text{
+        flex: 1;
+        font-family: 'Noto Sans TC';
+        font-size: 16px;
+        color: #707070;
+        letter-spacing: 0.3px ;
+        display: flex;
+        flex-direction: column;
+        margin: 5px;
+        transition: 0.3s;
+
+
+
+        >span:first-child{
+          font-size: 17px;
+          transition: 0.3s;
+        }
+        >span{
+          padding: 2.7px 0;
+        }
+      }
+
+
+    }
+  }
+
+  .footer{
+    position: relative;
+    width: 100%;
+
+    z-index: 2;
+    transition: 1s;
+
+
+
+
+
+    .footer-box {
+
+      font-family: 'Noto Sans TC';
+      color: #B4B2B2;
+      letter-spacing: 0.8px;
+      display: flex;
+      margin: 30px 20%;
+      flex-wrap: wrap;
+      white-space: nowrap;
+
+
+
+
+
+      > div {
+        flex: 1;
+        //border: solid;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 290px;
+        padding: 10px 0;
+
+
+      }
+
+
+      .ic {
+        height: 24px;
+        width: 24px;
+        margin: 0 1% 0 0;
+
+
+        &.ic-address {
+          background: url("../../assets/img/round-room-24px.png") no-repeat center center;
+        }
+
+        &.ic-phone {
+          background: url("../../assets/img/round-phone-24px.png") no-repeat center center;
+        }
+
+        &.ic-mail {
+          background: url("../../assets/img/round-email-24px.png") no-repeat center center;
+        }
+      }
+    }
+
+  }
+}

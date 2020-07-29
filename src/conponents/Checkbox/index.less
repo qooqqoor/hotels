@@ -1,0 +1,31 @@
+.checkbox{
+
+  display: flex;
+  align-items: center;
+  margin: 3px 0;
+
+
+
+
+    .checkbox-icon{
+      height:  calc(22px + 0.15vw);
+      width:  calc(22px + 0.15vw);
+      margin: 0 1% 0 0;
+
+
+
+      &.checked{
+        background: url("../../assets/img/checkbox.svg") no-repeat center center;
+      }
+      &.nochecked{
+        background: url("../../assets/img/boxoutlineblank.svg") no-repeat center center;
+      }
+    }
+  >span{
+    font-family: Noto Sans TC;
+    font-size: calc(14px + 0.15vw);
+    color: #676767;
+  }
+
+
+}

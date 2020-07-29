@@ -1,0 +1,121 @@
+
+.data-box{
+  width: 106.5%;
+  //border: solid;
+
+
+  top: 70%;
+  left: -3.5%;
+  position: absolute;
+  z-index: 1;
+  //border: solid;
+  display: flex;
+  justify-content: center;
+  animation: datefi 1 0.2s  ease-in-out both;
+
+
+
+
+  >img{
+    width: 100%;
+    height: auto;
+
+  }
+  .datelist{
+    //border: solid;
+    width: 90%;
+    top: 10%;
+    height: 82%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    //border: solid;
+
+
+    .date-title{
+
+      width: 88%;
+      height: 23%;
+      border-bottom: solid #B4B2B2 1px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      >img{
+        height: 70%;
+        cursor: pointer;
+        transition: .1s;
+
+        &:hover{
+          filter: brightness(1.4);
+        }
+        &:active{
+          filter: brightness(1);
+        }
+      }
+      >p{
+        font-family: Noto Sans TC;
+        font-size: calc(21px + 0.25vh);
+        color: #707070;
+        letter-spacing: 1.5px;
+        font-weight: 500;
+      }
+    }
+    .date-center{
+      height: 77%;
+      width: 90%;
+
+      .date-center-table{
+
+        width: 98%;
+        height: 100%;
+        text-align: center;
+        font-family: Noto Sans TC;
+        font-size: calc(9px + 0.10vh);
+        color: #707070;
+        margin: 1%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: stretch;
+        flex-wrap: wrap;
+
+        >div{
+          //border: solid;
+          width: calc(100% / 7.1);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+        }
+        .dadd{
+          cursor: pointer;
+
+          :hover{
+            transform: scale(1.05);
+          }
+        }
+
+
+        .bord{
+          font-weight: 1000;
+          filter: drop-shadow(0px 0px  0.5px #707070);
+        }
+      }
+    }
+
+  }
+
+}
+@keyframes datefi {
+  0% {
+
+    opacity: 0;
+  }
+
+  100% {
+
+    opacity: 1;
+  }
+}
