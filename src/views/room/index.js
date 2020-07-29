@@ -156,9 +156,10 @@ export default class Ringtons extends React.Component{
     }
 
     componentDidMount=async() =>{
-        let roomid = new URL(window.location.href)
-        const {items,allitems} = await this.onceHotels(roomid.searchParams.get('id'))
-
+        let roomid = this.props.match.params.id
+        const {items,allitems} = await this.onceHotels(roomid)
+        //console.log(this.props.match.params.id)
+        //match.params.id
         this.setState({
             loading:true,
             oncedata:items,

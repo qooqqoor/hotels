@@ -3,7 +3,7 @@ import {Route,BrowserRouter,Switch} from "react-router-dom"
 import {Loading} from "../conponents/Loading"
 const HomePage = lazy(() =>
     import(
-       '../views/Homepage/Homepage.js'
+       '../views/homePage/Homepage'
         )
 )
 const Room = lazy(() =>
@@ -27,7 +27,7 @@ class RouterPage extends React.Component{
 
                         <div className="pages">
                             <Route path="/" exact component={HomePage} />
-                            <Route path="/room" exact component={Room} />
+                            <Route path="/room/:id?"  component={Room} />
                         </div>
 
 

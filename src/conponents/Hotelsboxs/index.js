@@ -17,9 +17,11 @@ export const Hotelsboxs = (props) =>{
                                     <Link
                                         className="hotexbox"
                                         to={{
-                                            pathname:'/room',
-                                            search:'?id='+item.id,
+                                            pathname:`/room/${item.id}`,
+
+
                                         }}
+
                                         key={item.id}
                                         style={{
                                             animationDelay:`${index/5}s`
