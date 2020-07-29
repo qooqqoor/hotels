@@ -1,26 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.less';
+import {RouterPage} from  './router/index.js'
+import axios from "axios";
+axios.defaults.headers.common['Authorization'] = 'Bearer y3BpjcSJlpfrhNsBtPRwXopCnx67lKIG5CVx0rweLOBO00GR4cq6aROrANfs';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+        <>
+            <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Noto+Sans+TC:wght@300&display=swap" rel="stylesheet"/>
+
+            <RouterPage />
+        </>
+
+    )
+  }
 }
+
+
 
 export default App;
