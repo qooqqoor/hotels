@@ -83,7 +83,8 @@ export default class Ringtons extends React.Component{
 
 
                         this.setState({
-                            dateboxlist: Time.TimeList(this.state.dateboxcheck1, this.state.dateboxcheck2)
+                            dateboxlist: Time.TimeList(this.state.dateboxcheck1, this.state.dateboxcheck2),
+
                         })
                     })
 
@@ -141,7 +142,7 @@ export default class Ringtons extends React.Component{
             }
         }
 
-        setsave&&this.setState({
+        setsave&& this.setState({
             datebox2date:item,
             dateboxcheck2:item,
             datebox1:false,
@@ -152,8 +153,11 @@ export default class Ringtons extends React.Component{
 
 
              this.setState({
-                 dateboxlist:Time.TimeList(this.state.dateboxcheck1,this.state.dateboxcheck2)
+                 dateboxlist:Time.TimeList(this.state.dateboxcheck1,this.state.dateboxcheck2),
+
              })
+
+
          })
 
 

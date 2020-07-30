@@ -60,6 +60,7 @@ export  class Date extends React.Component{
     SetDatebox1= async (e)=>{
         const {setDatebox1} = this.props
         setDatebox1()
+        e.stopPropagation()
 
     }
 
@@ -105,7 +106,7 @@ export  class Date extends React.Component{
         //dateboxdate.setMonth(Time.Month(dateboxdate)+2,1)
             //console.log((this.state.dateboxdateCopy)+'/'+(this.state.dateboxdate))
         //console.log((this.state.totalday))
-        console.log('dateboxdateCopy='+this.state.dateboxdateCopy)
+        //console.log('dateboxdateCopy='+this.state.dateboxdateCopy)
         return(
             <>
                 <input className={className} type="text"
