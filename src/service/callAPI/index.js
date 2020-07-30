@@ -27,7 +27,8 @@ export const getHotels = (style,id) =>{
 }
 
 export const checkHotels = (id,param) => {//預約房型
-    return axios.post(baseURLroom+'/'+id,param)
+    const URL = baseURLroom+'/'+id
+    return axios.post(URL,param)
         .then(function (response) {
 
             return response.data

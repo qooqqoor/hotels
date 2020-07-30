@@ -1,6 +1,7 @@
 import React from "react";
 import "./index.less"
 import * as Time from "../../conponents/Time"
+import {strmonyh} from "../../conponents/Time";
 
 export  class Date extends React.Component{
 
@@ -16,6 +17,7 @@ export  class Date extends React.Component{
             dateboxdate:dateboxdate,
             dateboxdateCopy:dateboxdate,
             totalday:Time.Totalday(dateboxdate),
+
             dayArray:dayArray
 
         }
@@ -63,13 +65,14 @@ export  class Date extends React.Component{
 
     componentDidMount() {
 
-        const aaa = Time.Setday(this.state.dateboxdate)
+        // const aaa = Time.Setday(this.state.dateboxdate)
 
 
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
 
         const {dateboxdate} = this.props
+
         if(prevProps.dateboxdate!=dateboxdate){
             this.setState({
                 dateboxdateCopy:Time.Setday(dateboxdate)
@@ -79,7 +82,10 @@ export  class Date extends React.Component{
 
 
     render(){
-        const {className,inputBox,datebox,dateboxcheck}=this.props
+        const {className,inputBox,datebox,dateboxcheck,dateboxlist,afterdate,booking}=this.props
+
+
+
 
 
 
@@ -136,15 +142,57 @@ export  class Date extends React.Component{
                                             <div className='bord'>SUN</div>
 
                                             {
+
                                                 this.state.dayArray.map((item,index)=>{
                                                     if(item!=0){
                                                         // return <div key={index}>{item}</div>'
+                                                        const datt = Time.Year(this.state.dateboxdateCopy)+'-'+Time.strmonyh(Time.Month(this.state.dateboxdateCopy)+1)+'-'+Time.strmonyh(item)
+
+                                                        let checked  = ''
+                                                        //console.log('dateboxlist='+dateboxlist)
+
+                                                        dateboxlist&&dateboxlist.map((edit)=>{
+                                                            if(datt==edit){
+                                                                checked+=' checked'
+                                                            }
+                                                            //console.log('datt='+datt)
+                                                            //console.log('edit='+edit)
+
+                                                        })
                                                         if(index==5||index==6||index==12||index==13||index==19||index==20||index==26||index==27||index==33||index==34){
-                                                            return <div key={index} className={`bord dadd`} onClick={()=>this.setDatebox2date(item)}>{item}</div>
+                                                            checked+=' bord'
                                                         }
+                                                        let bookins = false
+                                                        console.log(booking)
+                                                        booking.map((emd)=>{
+                                                            if(datt==emd){
+                                                                 bookins = true
+                                                            }
+                                                            console.log('emd'+emd)
+                                                        })
+
+
+
+                                                        //this.state.dayArray.map
+                                                        //console.log('afterdate='+afterdate+'&'+'datt='+datt)
+                                                        if(Time.Setday(afterdate)>=Time.Setday(datt)){
+                                                            return <div key={index} className={`afterdate ${checked}`} >{item}</div>
+                                                        }
+
                                                         else{
-                                                            return <div key={index} className={`dadd`} onClick={()=>this.setDatebox2date(item)}>{item}</div>
+                                                            if(bookins){
+                                                                return <div key={index} className={`booking ${checked}`} >{item}</div>
+                                                            }
+                                                            else{
+                                                                return <div key={index} className={`dadd ${checked}`} onClick={()=>this.setDatebox2date(item)}>{item}</div>
+                                                            }
+
+
                                                         }
+
+
+
+
                                                     }
                                                     else{
                                                         return <div key={index}></div>

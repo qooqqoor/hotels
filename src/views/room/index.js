@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {getHotels} from "../../service/callAPI";
+import {getHotels,checkHotels} from "../../service/callAPI";
 import {Loading} from "../../conponents/Loading";
 import {Text} from "../../conponents/Text"
 import {RoomImage} from "../../conponents/RoomImage"
@@ -39,6 +39,8 @@ export default class Ringtons extends React.Component{
         datebox2date:Time.today(),
         dateboxcheck1:'',
         dateboxcheck2:'',
+        dateboxlist:'',
+        booking:'',
     }
 
     onceHotels = async (id) => {
@@ -51,21 +53,109 @@ export default class Ringtons extends React.Component{
 
 
     }
-    setDatebox1date=(item)=>{
-        this.setState({
+    setDatebox1date=   (item)=>{
+        (Time.Setday(this.state.dateboxcheck2)<Time.Setday(item))&&this.setState({datebox2date:item,dateboxcheck2:item})
+        !this.state.dateboxcheck2&&this.setState({datebox2date:item})
+        //const settime =  (Time.Setday(this.state.dateboxcheck1)<Time.Setday(this.state.dateboxcheck2))?this.state.dateboxcheck1:this.state.dateboxcheck
+        const mapList = Time.TimeList(item,this.state.dateboxcheck2)
+        const booking = this.state.booking
+        let setsave = true
+
+
+        for(const item of mapList){
+            for(const bokk of booking){
+                if(item==bokk){
+                    alert('預約期間已有其他預約，請更改時間！')
+                    setsave = false
+
+                    this.setState({
+                        datebox2date:item,
+                        dateboxcheck2:'',
+                        datebox1date:item,
+                        dateboxcheck1:'',
+                        dateboxlist: ''
+
+
+
+                    },()=> {
+
+
+                        this.setState({
+                            dateboxlist: Time.TimeList(this.state.dateboxcheck1, this.state.dateboxcheck2)
+                        })
+                    })
+
+                    return
+                }
+
+            }
+        }
+
+
+        setsave&&this.setState({
+
             datebox1date:item,
             dateboxcheck1:item,
             datebox1:false,
             datebox2:false,
-        })
+
+        },()=>{
+             this.setState({
+                 dateboxlist:Time.TimeList(this.state.dateboxcheck1,this.state.dateboxcheck2)
+             })
+         })
+
+
+
+
     }
-    setDatebox2date=(item)=>{
-        this.setState({
+    setDatebox2date= async (item)=>{
+        //const cc = await (Time.Setday(this.state.dateboxcheck1)>Time.Setday(item))?this.state.dateboxcheck1:item
+
+        const mapList = Time.TimeList(this.state.dateboxcheck1,item)
+        const booking = this.state.booking
+        let setsave = true
+
+
+        for(const item of mapList){
+            for(const bokk of booking){
+                if(item==bokk){
+                    alert('預約期間已有其他預約，請更改時間！')
+                    setsave = false
+                    this.setState({
+                        datebox2date:item,
+                        dateboxcheck2:'',
+                        datebox1date:item,
+                        dateboxcheck1:'',
+                        dateboxlist: ''
+
+
+                    })
+
+
+                    return
+                }
+
+            }
+        }
+
+        setsave&&this.setState({
             datebox2date:item,
             dateboxcheck2:item,
             datebox1:false,
             datebox2:false,
-        })
+
+        },()=>{
+
+
+
+             this.setState({
+                 dateboxlist:Time.TimeList(this.state.dateboxcheck1,this.state.dateboxcheck2)
+             })
+         })
+
+
+        //Time.TimeList(this.state.dateboxcheck1,this.state.dateboxcheck2)
     }
     setCheckinBox=()=>{
         this.setState({
@@ -73,7 +163,7 @@ export default class Ringtons extends React.Component{
         })
     }
     changeTitleImage=(item)=>{
-        console.log(item)
+        //console.log(item)
         this.setState({
             titleImage:item,
         })
@@ -155,6 +245,27 @@ export default class Ringtons extends React.Component{
         })
     }
 
+    parameSubmit=async ()=>{
+        this.setState({
+            checkinBox:false,
+            loading:false
+        })
+        const params = {
+            name:this.state.speciesName,
+            tel:this.state.speciesPhone,
+            date:this.state.dateboxlist,
+        }
+        const {success} = await  checkHotels(this.props.match.params.id,params)
+        this.setState({
+
+            loading:true
+        })
+        console.log(success)
+
+        success&&alert('預約成功！')
+
+    }
+
     componentDidMount=async() =>{
         let roomid = this.props.match.params.id
         const {items,allitems} = await this.onceHotels(roomid)
@@ -166,8 +277,18 @@ export default class Ringtons extends React.Component{
             titleImage:items.room[0].imageUrl[0],
             alldatas : allitems.items,
 
+        },()=>{
+            const booking  = (
+                this.state.oncedata.booking.map((item)=>{
+                    return item.date
+                })
+            )
+            this.setState({
+                booking:booking
+            })
         })
     }
+
 
     render() {
 
@@ -176,13 +297,19 @@ export default class Ringtons extends React.Component{
         const loading = this.state.loading
         const alldata = this.state.alldatas
         const oncedata = this.state.oncedata
-        console.log('datebox1date='+this.state.datebox1date)
-        console.log('datebox2date='+this.state.datebox2date)
+
+        console.log(oncedata)
+        //console.log('datebox2date='+this.state.datebox2date)
+
+        const dateboxcheck2add = Time.Setday(this.state.dateboxcheck2)
+
+        dateboxcheck2add.setDate(dateboxcheck2add.getDate()+1)
+        const enddateboxcheck2add = Time.Year(dateboxcheck2add)+'/'+(Time.Month(dateboxcheck2add)+1)+'/'+(Time.thisDate(dateboxcheck2add))
 
         return (
             <>
 
-                        <div className="room" onClick={()=>this.setDatebox1(false,false)}>
+                        <div className="room" onClick={()=>(this.state.datebox1||this.state.datebox2)&&this.setDatebox1(false,false)}>
                                 <Text className="title">WHITE  INN</Text>
                             {
                                 loading?'':<Loading/>
@@ -190,13 +317,19 @@ export default class Ringtons extends React.Component{
                             }
                             {
                                 this.state.checkinBox&&(
+
                                 <CheckinBox
                                     setCheckinBox={this.setCheckinBox}
                                     oncedata={oncedata&&oncedata}
                                     speciesName={this.state.speciesName}
                                     speciesPhone={this.state.speciesPhone}
                                     dateboxcheck1={this.state.dateboxcheck1}
-                                    dateboxcheck2={this.state.dateboxcheck2}
+                                    dateboxcheck2={enddateboxcheck2add}
+                                    checkInEarly={oncedata.room[0].checkInAndOut.checkInEarly}
+                                    checkOut={oncedata.room[0].checkInAndOut.checkOut}
+                                    normalDayPrice={oncedata&&oncedata.room[0].normalDayPrice}
+                                    holidayPrice={oncedata&&oncedata.room[0].holidayPrice}
+                                    parameSubmit={this.parameSubmit}
 
                                 />
                                 )
@@ -248,6 +381,9 @@ export default class Ringtons extends React.Component{
                                                         setDatebox1={()=>this.setDatebox1(true,false)}
                                                         setDateboxdate={this.setDatebox1date}
                                                         dateboxcheck={this.state.dateboxcheck1}
+                                                        afterdate={Time.today()}
+                                                        dateboxlist={this.state.dateboxlist}
+                                                        booking={this.state.booking}
                                                     />
                                                     <Date
                                                         className={`${!this.state.dateboxcheck2&&'date-end'}`}
@@ -257,6 +393,9 @@ export default class Ringtons extends React.Component{
                                                         setDatebox1={()=>this.setDatebox1(false,true)}
                                                         setDateboxdate={this.setDatebox2date}
                                                         dateboxcheck={this.state.dateboxcheck2}
+                                                        afterdate={this.state.dateboxcheck1?this.state.dateboxcheck1:Time.today()}
+                                                        dateboxlist={this.state.dateboxlist}
+                                                        booking={this.state.booking}
                                                     />
                                                 </div>
                                             </div>

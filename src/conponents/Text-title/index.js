@@ -15,8 +15,8 @@ export const Texttitle = (props) =>{
                             <Link
                                 key={item.id}
                                 to={{
-                                    pathname:'/room',
-                                    search:'?id='+item.id,
+                                    pathname:'/room/'+item.id,
+
                                 }}
                                 className="text-p"
                                 onClick={()=>changeTitle(item.id)}
