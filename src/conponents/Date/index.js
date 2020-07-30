@@ -75,7 +75,8 @@ export  class Date extends React.Component{
 
         if(prevProps.dateboxdate!=dateboxdate){
             this.setState({
-                dateboxdateCopy:Time.Setday(dateboxdate)
+                dateboxdateCopy:Time.Setday(dateboxdate),
+                dayArray:Time.MonthDay(this.state.dateboxdateCopy)
             })
         }
     }
@@ -83,7 +84,6 @@ export  class Date extends React.Component{
 
     render(){
         const {className,inputBox,datebox,dateboxcheck,dateboxlist,afterdate,booking}=this.props
-
 
 
 
@@ -105,6 +105,7 @@ export  class Date extends React.Component{
         //dateboxdate.setMonth(Time.Month(dateboxdate)+2,1)
             //console.log((this.state.dateboxdateCopy)+'/'+(this.state.dateboxdate))
         //console.log((this.state.totalday))
+        console.log('dateboxdateCopy='+this.state.dateboxdateCopy)
         return(
             <>
                 <input className={className} type="text"
@@ -147,6 +148,7 @@ export  class Date extends React.Component{
                                                     if(item!=0){
                                                         // return <div key={index}>{item}</div>'
                                                         const datt = Time.Year(this.state.dateboxdateCopy)+'-'+Time.strmonyh(Time.Month(this.state.dateboxdateCopy)+1)+'-'+Time.strmonyh(item)
+                                                        const datt2 = Time.Year(this.state.dateboxdateCopy)+'-'+(Time.Month(this.state.dateboxdateCopy)+1)+'-'+(item)
 
                                                         let checked  = ''
                                                         //console.log('dateboxlist='+dateboxlist)
@@ -163,19 +165,21 @@ export  class Date extends React.Component{
                                                             checked+=' bord'
                                                         }
                                                         let bookins = false
-                                                        console.log(booking)
+                                                        //console.log(booking)
                                                         booking.map((emd)=>{
                                                             if(datt==emd){
                                                                  bookins = true
                                                             }
-                                                            console.log('emd'+emd)
+
+
                                                         })
 
 
+                                                        console.log(afterdate+'  '+datt)
 
-                                                        //this.state.dayArray.map
-                                                        //console.log('afterdate='+afterdate+'&'+'datt='+datt)
-                                                        if(Time.Setday(afterdate)>=Time.Setday(datt)){
+                                                        if(Time.Setday(afterdate)>=Time.Setday(datt2)){
+
+
                                                             return <div key={index} className={`afterdate ${checked}`} >{item}</div>
                                                         }
 

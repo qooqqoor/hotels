@@ -298,7 +298,7 @@ export default class Ringtons extends React.Component{
         const alldata = this.state.alldatas
         const oncedata = this.state.oncedata
 
-        console.log(oncedata)
+        //console.log(oncedata)
         //console.log('datebox2date='+this.state.datebox2date)
 
         const dateboxcheck2add = Time.Setday(this.state.dateboxcheck2)
@@ -381,7 +381,7 @@ export default class Ringtons extends React.Component{
                                                         setDatebox1={()=>this.setDatebox1(true,false)}
                                                         setDateboxdate={this.setDatebox1date}
                                                         dateboxcheck={this.state.dateboxcheck1}
-                                                        afterdate={Time.today()}
+                                                        afterdate={(Time.today())}
                                                         dateboxlist={this.state.dateboxlist}
                                                         booking={this.state.booking}
                                                     />
