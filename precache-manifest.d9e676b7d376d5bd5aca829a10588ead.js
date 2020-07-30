@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0d5cf1d809e3bd2f9ae72a8eb2537db8",
+    "revision": "e3898fb81a610f8bc603372e50286cfd",
     "url": "/hotels/index.html"
   },
   {
-    "revision": "b55035d4d22f51762e3f",
-    "url": "/hotels/static/css/3.98a19bb7.chunk.css"
+    "revision": "76b6268b0834933750c4",
+    "url": "/hotels/static/css/3.15fd9b8a.chunk.css"
   },
   {
     "revision": "d0bc7a6ecd5f7015e880",
@@ -24,7 +24,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/hotels/static/js/2.c0290dfa.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b55035d4d22f51762e3f",
+    "revision": "76b6268b0834933750c4",
     "url": "/hotels/static/js/3.264a00bf.chunk.js"
   },
   {
@@ -36,8 +36,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/hotels/static/js/main.9a6bf8ee.chunk.js"
   },
   {
-    "revision": "baef7e98d56983008734",
-    "url": "/hotels/static/js/runtime-main.f792e65f.js"
+    "revision": "fe3ade27cefd90df7f64",
+    "url": "/hotels/static/js/runtime-main.4f6d2c10.js"
   },
   {
     "revision": "6a51b5b72f30405c43b814da0cc20fb3",
