@@ -259,23 +259,12 @@ export default class Ringtons extends React.Component{
             date:this.state.dateboxlist,
         }
         const {success} = await  checkHotels(this.props.match.params.id,params)
-        await this.setState({
 
-            loading:true,
-            speciesName:'',
-            speciesPhone:'',
-            datebox1date:Time.today(),
-            datebox2date:Time.today(),
-            dateboxcheck1:'',
-            dateboxcheck2:'',
-            dateboxlist:'',
 
-        })
-        this.Name.current.value = ''
-        this.Phone.current.value = ''
         console.log(success)
 
         success&&alert('預約成功！')
+        window.history.go(0)
 
 
 
@@ -319,6 +308,13 @@ export default class Ringtons extends React.Component{
         const dateboxcheck2add = Time.Setday(this.state.dateboxcheck2)
 
         dateboxcheck2add.setDate(dateboxcheck2add.getDate()+1)
+
+        const dateboxcheck1add = Time.Setday(this.state.dateboxcheck1)
+
+        dateboxcheck1add.setDate(dateboxcheck1add.getDate()+1)
+
+        console.log(dateboxcheck2add)
+        const enddateboxcheck1add = Time.Year(dateboxcheck1add)+'/'+(Time.Month(dateboxcheck1add)+1)+'/'+(Time.thisDate(dateboxcheck1add))
         const enddateboxcheck2add = Time.Year(dateboxcheck2add)+'/'+(Time.Month(dateboxcheck2add)+1)+'/'+(Time.thisDate(dateboxcheck2add))
 
         return (
@@ -338,7 +334,7 @@ export default class Ringtons extends React.Component{
                                     oncedata={oncedata&&oncedata}
                                     speciesName={this.state.speciesName}
                                     speciesPhone={this.state.speciesPhone}
-                                    dateboxcheck1={this.state.dateboxcheck1}
+                                    dateboxcheck1={enddateboxcheck1add}
                                     dateboxcheck2={enddateboxcheck2add}
                                     checkInEarly={oncedata.room[0].checkInAndOut.checkInEarly}
                                     checkOut={oncedata.room[0].checkInAndOut.checkOut}
