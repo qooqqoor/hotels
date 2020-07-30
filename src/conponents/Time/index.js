@@ -76,7 +76,7 @@ export const Dayconst =  (date1,date2,normalDayPrice,holidayPrice) =>{
 
 
 
-    const  money = [normalDayPrice,normalDayPrice,normalDayPrice,normalDayPrice,holidayPrice,holidayPrice,normalDayPrice]
+    const  money = [normalDayPrice,normalDayPrice,normalDayPrice,normalDayPrice,normalDayPrice,holidayPrice,holidayPrice]
     const days = Daydays(date1,date2)
     let firstdayweek =  Setday(date1).getDay()
     let total = 0

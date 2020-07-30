@@ -18,6 +18,8 @@ export default class Ringtons extends React.Component{
 
     constructor(props) {
         super(props);
+        this.Name = React.createRef();
+        this.Phone = React.createRef();
     }
 
 
@@ -231,6 +233,7 @@ export default class Ringtons extends React.Component{
         this.setState({
             speciesName:e.target.value
         })
+        // /console.log(this.Name.current.value)
     }
     setPhoneValue=(e)=>{
         this.setState({
@@ -256,13 +259,25 @@ export default class Ringtons extends React.Component{
             date:this.state.dateboxlist,
         }
         const {success} = await  checkHotels(this.props.match.params.id,params)
-        this.setState({
+        await this.setState({
 
-            loading:true
+            loading:true,
+            speciesName:'',
+            speciesPhone:'',
+            datebox1date:Time.today(),
+            datebox2date:Time.today(),
+            dateboxcheck1:'',
+            dateboxcheck2:'',
+            dateboxlist:'',
+
         })
+        this.Name.current.value = ''
+        this.Phone.current.value = ''
         console.log(success)
 
         success&&alert('預約成功！')
+
+
 
     }
 
@@ -366,11 +381,13 @@ export default class Ringtons extends React.Component{
                                                     type="text"
                                                     //value={this.state.speciesName}
                                                     onKeyUp={(e)=>this.setTextValue(e)}
+                                                    ref = {this.Name}
                                                 />
                                                 <input
                                                     className={`species-input ${this.state.speciesPhone?'':'species-phone'}`}
                                                     type="text"
                                                     onKeyUp={(e)=>this.setPhoneValue(e)}
+                                                    ref = {this.Phone}
                                                 />
                                                 <div className='species-date'>
                                                     <Date
