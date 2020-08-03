@@ -1,5 +1,6 @@
+
 .homepages{
-  width: 100%;
+  width: 100vw;
   min-height: 100%;
   position: relative;
   background-color: #fff;
@@ -15,7 +16,7 @@
   &::after{
     content: '';
     display: block;
-    width: 100%;
+    width: 100vw;
     height: 36.75%;
     background-color: #F0F0F0;
     position: absolute;
@@ -28,7 +29,7 @@
     font-size: calc(60px + 5vw);
     margin: 68px 0;
 
-    width: 100%;
+    width: 100vw;
     text-align: center;
 
   }
@@ -38,6 +39,8 @@
     display: flex;
 
     flex-wrap: wrap;
+    align-items: stretch;
+
     width: 80%;
     margin-top: 5%;
     z-index: 2;
@@ -67,6 +70,8 @@
       transform: translateX(-50%);
       z-index: 1;
       animation: fadein 1 1s 2s ease-in-out both;
+
+
     }
 
 
@@ -80,7 +85,10 @@
       display: flex;
       flex-direction:column ;
 
-      min-width: 250px;
+
+
+
+      min-width: 200px;
 
       z-index: 2;
       justify-content: center;
@@ -130,6 +138,7 @@
         flex: 3.7;
         height: 100%;
         overflow: hidden;
+
         >div{
           height: 100%;
           background-size:      cover;
@@ -171,6 +180,8 @@
 
     z-index: 2;
     transition: 1s;
+    display: flex;
+    justify-content: center;
 
 
 
@@ -182,7 +193,7 @@
       color: #B4B2B2;
       letter-spacing: 0.8px;
       display: flex;
-      margin: 30px 20%;
+      width: 80%;
       flex-wrap: wrap;
       white-space: nowrap;
 
@@ -196,7 +207,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        min-width: 290px;
+        min-width: 250px;
         padding: 10px 0;
 
 
@@ -225,3 +236,14 @@
 
   }
 }
+
+@media only screen and (max-width: 1516px) and (min-width: 1170px) {
+
+  .hotexbox {
+
+
+    min-width: calc(100% / 4) !important;
+  }
+
+}
+
