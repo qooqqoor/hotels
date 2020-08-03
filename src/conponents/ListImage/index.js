@@ -2,7 +2,7 @@ import React from "react";
 import "./index.less"
 
 export const ListImage = (props) =>{
-    const {item,className,changeTitleImage} = props
+    const {item,className,changeTitleImage,onClick} = props
 
     return(
         <div className='imglist'>
@@ -11,7 +11,7 @@ export const ListImage = (props) =>{
                 style={{
                     backgroundImage:`url(${item})`,
                 }}
-                onClick={()=>changeTitleImage(item)}
+                onClick={()=>onClick()}
             />
         </div>
 

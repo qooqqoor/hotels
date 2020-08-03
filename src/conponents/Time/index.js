@@ -41,7 +41,7 @@ export const MonthDay=(date)=>{
     let start = 0;
 
 
-    for(let a=0;a<42;a++){
+    for(let a=1;a<42;a++){
         if(a>=Day.getDay()&&start<=totalday){
             start++
         }
@@ -49,8 +49,6 @@ export const MonthDay=(date)=>{
         if(start<=totalday){
             dayArray[a]=start
         }
-
-
 
     }
     //console.log(dayArray)
@@ -128,7 +126,7 @@ export const TimeList = (date1,date2) =>{
 
 
     }
-    console.log(datArray)
+    //console.log(datArray)
     return datArray
 
 

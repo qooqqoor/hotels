@@ -28,8 +28,8 @@ export default class Ringtons extends React.Component{
         data:'',
         loading:false,
         oncedata:"",
-        titleImage:'',
-        listImage:'',
+
+
         oncedataroom:'',
         alldatas:'',
         checkinBox:false,
@@ -43,6 +43,7 @@ export default class Ringtons extends React.Component{
         dateboxcheck2:'',
         dateboxlist:'',
         booking:'',
+
     }
 
     onceHotels = async (id) => {
@@ -55,13 +56,28 @@ export default class Ringtons extends React.Component{
 
 
     }
-    setDatebox1date=   (item)=>{
-        (Time.Setday(this.state.dateboxcheck2)<Time.Setday(item))&&this.setState({datebox2date:item,dateboxcheck2:item})
+    setDatebox1date= async  (item)=>{
+        //console.log(item)
+
+        const dateboxcheck1add = Time.Setday(item)
+        dateboxcheck1add.setDate(dateboxcheck1add.getDate()+1)
+        const enddateboxcheck1add = Time.Year(dateboxcheck1add)+'/'+(Time.Month(dateboxcheck1add)+1)+'/'+(Time.thisDate(dateboxcheck1add))
+
+
+
+
+        if(Time.Setday(this.state.dateboxcheck2)<=Time.Setday(item)||!this.state.dateboxcheck2){
+            await  this.setState({datebox2date:item,dateboxcheck2:enddateboxcheck1add})
+        }
+
+
         !this.state.dateboxcheck2&&this.setState({datebox2date:item})
         //const settime =  (Time.Setday(this.state.dateboxcheck1)<Time.Setday(this.state.dateboxcheck2))?this.state.dateboxcheck1:this.state.dateboxcheck
         const mapList = Time.TimeList(item,this.state.dateboxcheck2)
         const booking = this.state.booking
         let setsave = true
+
+        //console.log(mapList)
 
 
         for(const item of mapList){
@@ -168,11 +184,28 @@ export default class Ringtons extends React.Component{
             checkinBox:false,
         })
     }
-    changeTitleImage=(item)=>{
+    changeTitleImage=()=>{
         //console.log(item)
+        // this.setState({
+        //     titleImage:item,
+        // })
+        // console.log(555)
+        let totalImage = this.state.totalImage
+        const title = totalImage[0]
+
+        totalImage.shift()
+        totalImage.push(title)
+
+
+
+
+
         this.setState({
-            titleImage:item,
+            totalImage:totalImage
         })
+
+
+
 
     }
 
@@ -186,7 +219,8 @@ export default class Ringtons extends React.Component{
         await this.setState({
             loading:true,
             oncedata:items,
-            titleImage:items.room[0].imageUrl[0],
+
+            totalImage:items.room[0].imageUrl,
             alldatas : allitems.items,
         })
     }
@@ -282,7 +316,8 @@ export default class Ringtons extends React.Component{
         this.setState({
             loading:true,
             oncedata:items,
-            titleImage:items.room[0].imageUrl[0],
+
+            totalImage:items.room[0].imageUrl,
             alldatas : allitems.items,
 
         },()=>{
@@ -309,17 +344,17 @@ export default class Ringtons extends React.Component{
         //console.log(oncedata)
         //console.log('datebox2date='+this.state.datebox2date)
 
-        const dateboxcheck2add = Time.Setday(this.state.dateboxcheck2)
-
-        dateboxcheck2add.setDate(dateboxcheck2add.getDate()+1)
-
-        const dateboxcheck1add = Time.Setday(this.state.dateboxcheck1)
-
-        dateboxcheck1add.setDate(dateboxcheck1add.getDate()+1)
-
-        console.log(dateboxcheck2add)
-        const enddateboxcheck1add = Time.Year(dateboxcheck1add)+'/'+(Time.Month(dateboxcheck1add)+1)+'/'+(Time.thisDate(dateboxcheck1add))
-        const enddateboxcheck2add = Time.Year(dateboxcheck2add)+'/'+(Time.Month(dateboxcheck2add)+1)+'/'+(Time.thisDate(dateboxcheck2add))
+        // const dateboxcheck2add = Time.Setday(this.state.dateboxcheck2)
+        //
+        // dateboxcheck2add.setDate(dateboxcheck2add.getDate())
+        //
+        // const dateboxcheck1add = Time.Setday(this.state.dateboxcheck1)
+        //
+        // dateboxcheck1add.setDate(dateboxcheck1add.getDate()+1)
+        //
+        // console.log(dateboxcheck2add)
+        // const enddateboxcheck1add = Time.Year(dateboxcheck1add)+'/'+(Time.Month(dateboxcheck1add)+1)+'/'+(Time.thisDate(dateboxcheck1add))
+        // const enddateboxcheck2add = Time.Year(dateboxcheck2add)+'/'+(Time.Month(dateboxcheck2add)+1)+'/'+(Time.thisDate(dateboxcheck2add))
 
         return (
             <>
@@ -338,8 +373,8 @@ export default class Ringtons extends React.Component{
                                     oncedata={oncedata&&oncedata}
                                     speciesName={this.state.speciesName}
                                     speciesPhone={this.state.speciesPhone}
-                                    dateboxcheck1={enddateboxcheck1add}
-                                    dateboxcheck2={enddateboxcheck2add}
+                                    dateboxcheck1={this.state.dateboxcheck1}
+                                    dateboxcheck2={this.state.dateboxcheck2}
                                     checkInEarly={oncedata.room[0].checkInAndOut.checkInEarly}
                                     checkOut={oncedata.room[0].checkInAndOut.checkOut}
                                     normalDayPrice={oncedata&&oncedata.room[0].normalDayPrice}
@@ -351,8 +386,8 @@ export default class Ringtons extends React.Component{
                             }
                             <div className="body">
                                 <RoomImage
-                                    titleImage = {oncedata&&this.state.titleImage}
-                                    listImage = {oncedata&&oncedata.room[0].imageUrl}
+                                    titleImage = {oncedata&&this.state.totalImage[0]}
+                                    listImage = {oncedata&&this.state.totalImage}
                                     changeTitleImage = {this.changeTitleImage}
                                 />
                                 <div className="room-text">

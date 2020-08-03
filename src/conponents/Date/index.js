@@ -162,7 +162,7 @@ export  class Date extends React.Component{
                                                             //console.log('edit='+edit)
 
                                                         })
-                                                        if(index==5||index==6||index==12||index==13||index==19||index==20||index==26||index==27||index==33||index==34){
+                                                        if(index==7||index==6||index==14||index==13||index==21||index==20||index==28||index==27||index==35||index==34){
                                                             checked+=' bord'
                                                         }
                                                         let bookins = false
@@ -176,7 +176,7 @@ export  class Date extends React.Component{
                                                         })
 
 
-                                                        console.log(afterdate+'  '+datt)
+                                                        //console.log(afterdate+'  '+datt)
 
                                                         if(Time.Setday(afterdate)>=Time.Setday(datt2)){
 
